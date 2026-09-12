@@ -123,3 +123,26 @@ Pour accélérer l'apparition dans Google :
 5. cherche quelques liens locaux vers le site : annuaire associatif, maison de quartier, partenaires, communautés de jeux et de figurines à Toulouse.
 
 Le site ne contient volontairement pas de balise `meta keywords` : les mots-clés utiles sont placés naturellement dans les titres et le contenu visible.
+
+
+## Logo et favicon
+
+Le logo de l'association est intégré dans :
+
+```text
+rsc/logo-socle-a-socle.png
+```
+
+Il remplace le carré vert avec le `S` dans l'en-tête.
+
+Les icônes de navigateur générées sont :
+
+```text
+favicon.ico
+favicon-32x32.png
+favicon-180x180.png
+favicon-192x192.png
+favicon-512x512.png
+```
+
+Le favicon est référencé directement dans le `<head>` du site.

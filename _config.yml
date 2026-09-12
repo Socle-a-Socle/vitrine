@@ -9,9 +9,8 @@ lang: fr-FR
 # Pour un site GitHub Pages de projet, renseigne par exemple :
 # url: "https://mon-compte.github.io"
 # baseurl: "/socle-a-socle"
-#https://socle-a-socle.github.io/vitrine/
 
-url: "https://socle-a-socle.github.io"
-baseurl: "/vitrine"
+url: ""
+baseurl: ""
 
 markdown: kramdown
