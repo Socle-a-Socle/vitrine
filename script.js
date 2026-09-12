@@ -1,141 +1,191 @@
-(() => {
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value ?? "";
+}
+
+function setLink(id, href, label) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.href = href;
+  if (label) el.textContent = label;
+}
+
+function applyConfig() {
   const c = SITE_CONFIG;
-  const images = Array.isArray(GALLERY_IMAGES) ? GALLERY_IMAGES : [];
 
-  document.title = c.site.name;
-  document.querySelector('meta[name="description"]').content = c.site.description;
+  document.title = `${c.site.name} — ${c.site.location}`;
 
-  const set = (id, value) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value || "";
-  };
+  setText("site-name", c.site.name);
 
-  set("hero-eyebrow", c.hero.eyebrow);
-  set("hero-title", c.hero.title);
-  set("hero-text", c.hero.text);
+  setText("hero-eyebrow", c.hero.eyebrow);
+  setText("hero-title", c.hero.title);
+  setText("hero-text", c.hero.text);
 
-  set("about-eyebrow", c.about.eyebrow);
-  set("about-title", c.about.title);
-  set("about-text", c.about.text);
-
-  set("craft-eyebrow", c.craft.eyebrow);
-  set("craft-title", c.craft.title);
-  set("craft-text", c.craft.text);
-  set("craft-one-title", c.craft.one.title);
-  set("craft-one-text", c.craft.one.text);
-  set("craft-two-title", c.craft.two.title);
-  set("craft-two-text", c.craft.two.text);
-  set("craft-three-title", c.craft.three.title);
-  set("craft-three-text", c.craft.three.text);
-
-  set("meetings-eyebrow", c.meetings.eyebrow);
-  set("meetings-title", c.meetings.title);
-  set("meetings-intro", c.meetings.intro);
-  set("meeting-day", c.meetings.day);
-  set("meeting-frequency", c.meetings.frequency);
-  set("meeting-hours", c.meetings.hours);
-  set("meeting-place", c.meetings.place);
-  set("meeting-address", c.meetings.address);
-
-  set("gallery-eyebrow", c.gallery.eyebrow);
-  set("gallery-title", c.gallery.title);
-  set("gallery-intro", c.gallery.intro);
-  set("gallery-empty", c.gallery.empty);
-
-  set("cta-eyebrow", c.cta.eyebrow);
-  set("cta-title", c.cta.title);
-  set("cta-text", c.cta.text);
-  set("cta-discord", c.cta.button);
-  set("meeting-discord", c.meetings.button);
-  set("footer-name", c.site.name);
-  set("footer-location", c.footer.location);
-
-  document.querySelectorAll("#nav-discord, #hero-discord, #cta-discord, #meeting-discord")
-    .forEach(el => el.href = c.discord.url);
+  setText("about-eyebrow", c.about.eyebrow);
+  setText("about-title", c.about.title);
+  setText("about-text", c.about.text);
 
   const tags = document.getElementById("about-tags");
-  (c.about.tags || []).forEach(tag => {
-    const span = document.createElement("span");
-    span.textContent = tag;
-    tags.appendChild(span);
-  });
-
-  const hero = document.getElementById("hero-photos");
-  const heroImages = images.slice(0, Math.min(c.hero.imageLimit || 4, 4));
-
-  if (heroImages.length) {
-    heroImages.forEach((src, i) => {
-      const item = document.createElement("button");
-      item.className = "hero-photo hero-photo-" + (i + 1);
-      item.type = "button";
-      item.innerHTML = `<img src="${src}" alt="${c.site.name} — photo ${i + 1}">`;
-      item.addEventListener("click", () => openLightbox(i));
-      hero.appendChild(item);
-    });
-  } else {
-    hero.classList.add("no-photos");
-    hero.innerHTML = `
-      <div class="photo-placeholder">
-        <span>VOS PHOTOS</span>
-        <strong>Ajoutez vos images dans<br>le dossier <code>images/</code></strong>
-        <small>Elles apparaîtront automatiquement ici.</small>
-      </div>`;
-  }
-
-  const grid = document.getElementById("gallery-grid");
-  const empty = document.getElementById("gallery-empty");
-
-  if (!images.length) {
-    empty.hidden = false;
-  } else {
-    empty.hidden = true;
-    images.forEach((src, index) => {
-      const button = document.createElement("button");
-      button.className = "gallery-item";
-      button.type = "button";
-      button.innerHTML = `<img src="${src}" alt="${c.site.name} — photo ${index + 1}" loading="lazy">`;
-      button.addEventListener("click", () => openLightbox(index));
-      grid.appendChild(button);
+  if (tags) {
+    c.about.tags.forEach(tag => {
+      const span = document.createElement("span");
+      span.textContent = tag;
+      tags.appendChild(span);
     });
   }
 
+  setText("craft-eyebrow", c.craft.eyebrow);
+  setText("craft-title", c.craft.title);
+  setText("craft-text", c.craft.text);
+  setText("craft-one-title", c.craft.one.title);
+  setText("craft-one-text", c.craft.one.text);
+  setText("craft-two-title", c.craft.two.title);
+  setText("craft-two-text", c.craft.two.text);
+  setText("craft-three-title", c.craft.three.title);
+  setText("craft-three-text", c.craft.three.text);
+
+  setText("meetings-eyebrow", c.meetings.eyebrow);
+  setText("meetings-title", c.meetings.title);
+  setText("meetings-intro", c.meetings.intro);
+  setText("meeting-day", c.meetings.day);
+  setText("meeting-frequency", c.meetings.frequency);
+  setText("meeting-hours", c.meetings.hours);
+  setText("meeting-place", c.meetings.place);
+  setText("meeting-address", c.meetings.address);
+
+  setText("gallery-eyebrow", c.gallery.eyebrow);
+  setText("gallery-title", c.gallery.title);
+  setText("gallery-intro", c.gallery.intro);
+
+  setText("cta-eyebrow", c.cta.eyebrow);
+  setText("cta-title", c.cta.title);
+  setText("cta-text", c.cta.text);
+
+  setText("footer-name", `© ${new Date().getFullYear()} ${c.site.name}`);
+  setText("footer-location", c.footer.location);
+
+  setLink("nav-discord", c.discord.url);
+  setLink("hero-discord", c.discord.url);
+  setLink("meeting-button", c.discord.url, c.meetings.button);
+  setLink("cta-button", c.discord.url, c.cta.button);
+}
+
+function initLightbox() {
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightbox-image");
-  let current = 0;
+  const counter = document.getElementById("lightbox-counter");
+  const closeBtn = document.getElementById("lightbox-close");
+  const prevBtn = document.getElementById("lightbox-prev");
+  const nextBtn = document.getElementById("lightbox-next");
 
-  function show(index) {
-    if (!images.length) return;
-    current = (index + images.length) % images.length;
-    lightboxImage.src = images[current];
-    lightboxImage.alt = `${c.site.name} — photo ${current + 1}`;
+  if (!lightbox || !lightboxImage) return;
+
+  // La galerie principale sert de référence afin d'éviter les doublons
+  // avec les mêmes photos présentes dans le hero.
+  const galleryImages = Array.from(document.querySelectorAll(".gallery-item img"));
+
+  if (!galleryImages.length) return;
+
+  // Les images du hero peuvent elles aussi ouvrir le carrousel.
+  const clickableImages = Array.from(
+    document.querySelectorAll(".gallery-item img, .hero-gallery figure img")
+  );
+
+  let currentIndex = 0;
+  let touchStartX = null;
+
+  const normalizeSrc = (src) => {
+    const url = new URL(src, window.location.href);
+    return url.pathname;
+  };
+
+  function updateImage() {
+    const image = galleryImages[currentIndex];
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt || "Photo de l'association Socle à Socle";
+    counter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
   }
 
-  function openLightbox(index) {
-    if (!images.length) return;
-    show(index);
-    lightbox.classList.add("open");
+  function openAt(index) {
+    currentIndex = (index + galleryImages.length) % galleryImages.length;
+    updateImage();
+    lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
-    document.body.classList.add("no-scroll");
+    document.body.classList.add("lightbox-open");
+    closeBtn.focus();
   }
 
   function closeLightbox() {
-    lightbox.classList.remove("open");
+    lightbox.classList.remove("is-open");
     lightbox.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("no-scroll");
+    document.body.classList.remove("lightbox-open");
+    lightboxImage.removeAttribute("src");
   }
 
-  document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
-  document.getElementById("lightbox-prev").addEventListener("click", () => show(current - 1));
-  document.getElementById("lightbox-next").addEventListener("click", () => show(current + 1));
+  function previous() {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateImage();
+  }
 
-  lightbox.addEventListener("click", e => {
-    if (e.target === lightbox) closeLightbox();
+  function next() {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    updateImage();
+  }
+
+  clickableImages.forEach(image => {
+    image.classList.add("lightbox-trigger");
+    image.setAttribute("tabindex", "0");
+    image.setAttribute("role", "button");
+    image.setAttribute("aria-label", "Agrandir la photo");
+
+    const openImage = () => {
+      const target = normalizeSrc(image.src);
+      const index = galleryImages.findIndex(item => normalizeSrc(item.src) === target);
+      openAt(index >= 0 ? index : 0);
+    };
+
+    image.addEventListener("click", openImage);
+    image.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openImage();
+      }
+    });
   });
 
-  document.addEventListener("keydown", e => {
-    if (!lightbox.classList.contains("open")) return;
-    if (e.key === "Escape") closeLightbox();
-    if (e.key === "ArrowLeft") show(current - 1);
-    if (e.key === "ArrowRight") show(current + 1);
+  closeBtn.addEventListener("click", closeLightbox);
+  prevBtn.addEventListener("click", previous);
+  nextBtn.addEventListener("click", next);
+
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox || event.target.classList.contains("lightbox-stage")) {
+      closeLightbox();
+    }
   });
-})();
+
+  document.addEventListener("keydown", event => {
+    if (!lightbox.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") closeLightbox();
+    if (event.key === "ArrowLeft") previous();
+    if (event.key === "ArrowRight") next();
+  });
+
+  lightbox.addEventListener("touchstart", event => {
+    touchStartX = event.changedTouches[0].clientX;
+  }, { passive: true });
+
+  lightbox.addEventListener("touchend", event => {
+    if (touchStartX === null) return;
+
+    const deltaX = event.changedTouches[0].clientX - touchStartX;
+    touchStartX = null;
+
+    if (Math.abs(deltaX) < 50) return;
+    if (deltaX > 0) previous();
+    else next();
+  }, { passive: true });
+}
+
+applyConfig();
+initLightbox();

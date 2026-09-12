@@ -1,13 +1,8 @@
-/*
- * SOCLE À SOCLE — CONFIGURATION
- * Modifie uniquement ce fichier pour changer les textes du site.
- */
-
 const SITE_CONFIG = {
   site: {
     name: "Socle à Socle",
     location: "Toulouse",
-    description: "Association de modélisme et de jeux de figurines à Toulouse."
+    description: "Association de wargame, jeux de figurines et modélisme à Toulouse."
   },
 
   discord: {
@@ -15,48 +10,47 @@ const SITE_CONFIG = {
   },
 
   hero: {
-    eyebrow: "Modélisme · Décors · Jeux de figurines · Toulouse",
-    title: "Construire des mondes. Les faire vivre sur la table.",
-    text: "Socle à Socle est une association toulousaine où l'on fabrique des décors, construit des tables et joue à des jeux de figurines, principalement orientés escarmouche.",
-    imageLimit: 4
+    eyebrow: "Association · Wargame · Figurines · Modélisme · Toulouse",
+    title: "Wargame, figurines & modélisme à Toulouse.",
+    text: "Socle à Socle est une association toulousaine dédiée aux jeux de figurines et au modélisme. Nous nous retrouvons chaque vendredi pour jouer à des wargames d'escarmouche, peindre des figurines et construire décors et tables de jeu."
   },
 
   about: {
-    eyebrow: "L'association",
-    title: "Ici, la table de jeu fait partie du hobby.",
-    text: "Nous aimons autant fabriquer une table de jeu que la jouer. Décors, bâtiments, terrains, peinture et conversions côtoient des parties d'escarmouche où chaque figurine compte.",
+    eyebrow: "Association de jeux de figurines",
+    title: "Un club wargame à Toulouse où la table fait partie du hobby.",
+    text: "Nous aimons autant fabriquer une table de jeu que la jouer. Décors, bâtiments, terrains, peinture, conversions et soclage côtoient des parties d'escarmouche où chaque figurine compte.",
     tags: [
+      "Wargame",
+      "Jeux de figurines",
       "Modélisme",
       "Création de décors",
-      "Tables de jeu",
-      "Peinture",
-      "Escarmouche",
-      "Jeux de figurines"
+      "Peinture de figurines",
+      "Escarmouche"
     ]
   },
 
   craft: {
-    eyebrow: "Fabriquer · Peindre · Jouer",
-    title: "Bien plus qu'une partie.",
-    text: "Un espace pour partager les techniques, les idées et les projets qui donnent vie à nos tables.",
+    eyebrow: "Modélisme · Décors · Peinture",
+    title: "Créer, peindre et jouer.",
+    text: "Socle à Socle est aussi un espace de modélisme à Toulouse pour partager techniques, idées et projets autour des figurines et des tables de wargame.",
     one: {
-      title: "Créer les décors",
-      text: "Bâtiments, ruines, routes, terrains et éléments de table : on construit nos propres environnements de jeu."
+      title: "Créer des décors de wargame",
+      text: "Bâtiments, ruines, routes, terrains et éléments de table : nous construisons nos propres environnements pour les jeux de figurines."
     },
     two: {
-      title: "Faire vivre les figurines",
-      text: "Peinture, conversions, soclage et modélisme : chacun peut apprendre, montrer ses projets et progresser."
+      title: "Peindre et convertir les figurines",
+      text: "Peinture, conversions, soclage et modélisme : chacun peut apprendre, montrer ses projets et progresser avec les autres membres."
     },
     three: {
-      title: "Jouer en escarmouche",
-      text: "Des jeux où les tables et les figurines racontent une histoire, avec des parties accessibles et variées."
+      title: "Jouer à des jeux d'escarmouche",
+      text: "Nous jouons principalement à des wargames d'escarmouche, avec des parties accessibles, variées et des tables pensées pour raconter une histoire."
     }
   },
 
   meetings: {
-    eyebrow: "Nos rendez-vous",
-    title: "Le vendredi, la table est prête.",
-    intro: "Retrouvez-nous chaque semaine pour jouer, peindre, bricoler ou simplement passer voir ce qui se prépare sur les tables.",
+    eyebrow: "Club wargame à Toulouse",
+    title: "Rendez-vous chaque vendredi soir.",
+    intro: "Retrouvez notre association de jeux de figurines chaque semaine pour jouer, peindre, bricoler des décors ou simplement découvrir le wargame et le modélisme.",
     day: "VEN",
     frequency: "Tous les vendredis",
     hours: "20h → minuit",
@@ -66,20 +60,19 @@ const SITE_CONFIG = {
   },
 
   gallery: {
-    eyebrow: "Dans l'atelier et sur les tables",
-    title: "Ce que nous fabriquons.",
-    intro: "Les photos placées dans le dossier images/ apparaissent automatiquement ici. Les premières photos sont aussi mises en avant dès l'arrivée sur le site.",
-    empty: "Ajoutez simplement vos photos dans le dossier images/ : elles seront détectées automatiquement au prochain déploiement."
+    eyebrow: "Wargame & modélisme à Toulouse",
+    title: "Nos tables, figurines et décors.",
+    intro: "Découvrez les tables de wargame, figurines peintes, décors et projets de modélisme réalisés ou joués au sein de l'association Socle à Socle."
   },
 
   cta: {
-    eyebrow: "Venez nous rencontrer",
-    title: "Une table vous attend.",
-    text: "Le meilleur moyen de nous rejoindre est de passer par Discord : annoncez votre venue, trouvez une partie et venez découvrir l'association.",
+    eyebrow: "Rejoindre l'association",
+    title: "Envie de jouer à Toulouse ?",
+    text: "Rejoignez notre Discord pour annoncer votre venue, trouver une partie de wargame ou venir découvrir le modélisme et les jeux de figurines avec l'association.",
     button: "Rejoindre le Discord ↗"
   },
 
   footer: {
-    location: "Toulouse · Vendredi · 20h–minuit"
+    location: "Association wargame & figurines · Toulouse · Vendredi · 20h–minuit"
   }
 };
