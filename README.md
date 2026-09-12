@@ -211,12 +211,14 @@ Elles servent uniquement à produire des URL absolues parfaites dans le sitemap 
 Tu peux donc d'abord publier le site, vérifier qu'il fonctionne, puis renseigner l'URL publique ensuite.
 
 
-## V10 — logo centré
+## V11 — correction du logo
 
-L'en-tête utilise désormais une version carrée et centrée du logo :
+Cette version repart de la V9 stable.
+
+Le logo original est conservé tel quel :
 
 ```text
-assets/branding/logo-socle-a-socle-square.png
+assets/branding/logo-socle-a-socle.png
 ```
 
-Cela évite l'effet visuel de décalage causé par l'ancien fichier vertical.
+Le centrage est désormais fait uniquement en CSS, sans générer de nouvelle image carrée.
