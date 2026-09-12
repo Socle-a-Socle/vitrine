@@ -1,8 +1,4 @@
----
-layout: null
-permalink: /robots.txt
----
 User-agent: *
 Allow: /
 
-Sitemap: {{ '/sitemap.xml' | absolute_url }}
+Sitemap: https://socle-a-socle.github.io/vitrine/sitemap.xml

@@ -224,59 +224,23 @@ assets/branding/logo-socle-a-socle.png
 Le centrage est désormais fait uniquement en CSS, sans générer de nouvelle image carrée.
 
 
-## V12 — Google / SEO
+## V13 — SEO stable
 
-Cette version est configurée pour l'URL publique :
+Cette version repart de la V11 stable.
 
-```text
-https://socle-a-socle.github.io/vitrine/
-```
+- `config.js` est conservé ;
+- les textes sont également préremplis dans `index.html` pour que Google les voie sans exécuter JavaScript ;
+- la balise Google Search Console est intégrée ;
+- canonical, sitemap et robots utilisent l'URL publique réelle.
 
-### Google Search Console
-
-La balise de validation fournie est déjà intégrée dans `<head>` :
+Google Search Console :
 
 ```html
 <meta name="google-site-verification" content="vU9ihgHM160Ttn-JIVVmYIIG_DB5xtqMDBAByClsa9I" />
 ```
 
-Après avoir publié cette version :
-
-1. retourne dans Google Search Console ;
-2. valide la propriété `https://socle-a-socle.github.io/vitrine/` ;
-3. dans **Inspection de l'URL**, inspecte :
-   `https://socle-a-socle.github.io/vitrine/`
-4. clique sur **Demander une indexation** ;
-5. dans **Sitemaps**, soumets :
-   `https://socle-a-socle.github.io/vitrine/sitemap.xml`
-
-### Amélioration importante du référencement
-
-Les textes du site ne sont plus ajoutés par `config.js`.
-
-Ils sont désormais centralisés dans :
+Sitemap :
 
 ```text
-_data/content.yml
+https://socle-a-socle.github.io/vitrine/sitemap.xml
 ```
-
-Jekyll les insère directement dans le HTML pendant le déploiement. Google reçoit donc immédiatement les titres et paragraphes contenant les termes :
-
-- association wargame Toulouse ;
-- jeux de figurines Toulouse ;
-- modélisme Toulouse ;
-- peinture de figurines ;
-- jeux d'escarmouche.
-
-`config.js` a été supprimé volontairement.
-
-### URL et sitemap
-
-`_config.yml` contient désormais :
-
-```yaml
-url: "https://socle-a-socle.github.io"
-baseurl: "/vitrine"
-```
-
-La canonical, le sitemap, Open Graph et les données structurées utilisent donc l'URL publique correcte.

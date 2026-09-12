@@ -1,3 +1,76 @@
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value ?? "";
+}
+
+function setLink(id, href, label) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.href = href;
+  if (label) el.textContent = label;
+}
+
+function applyConfig() {
+  const c = SITE_CONFIG;
+
+  document.title = `${c.site.name} — ${c.site.location}`;
+
+  setText("site-name", c.site.name);
+
+  setText("hero-eyebrow", c.hero.eyebrow);
+  setText("hero-title", c.hero.title);
+  setText("hero-text", c.hero.text);
+
+  setText("about-eyebrow", c.about.eyebrow);
+  setText("about-title", c.about.title);
+  setText("about-text", c.about.text);
+
+  const tags = document.getElementById("about-tags");
+  if (tags) {
+    tags.innerHTML = "";
+    c.about.tags.forEach(tag => {
+      const span = document.createElement("span");
+      span.textContent = tag;
+      tags.appendChild(span);
+    });
+  }
+
+  setText("craft-eyebrow", c.craft.eyebrow);
+  setText("craft-title", c.craft.title);
+  setText("craft-text", c.craft.text);
+  setText("craft-one-title", c.craft.one.title);
+  setText("craft-one-text", c.craft.one.text);
+  setText("craft-two-title", c.craft.two.title);
+  setText("craft-two-text", c.craft.two.text);
+  setText("craft-three-title", c.craft.three.title);
+  setText("craft-three-text", c.craft.three.text);
+
+  setText("meetings-eyebrow", c.meetings.eyebrow);
+  setText("meetings-title", c.meetings.title);
+  setText("meetings-intro", c.meetings.intro);
+  setText("meeting-day", c.meetings.day);
+  setText("meeting-frequency", c.meetings.frequency);
+  setText("meeting-hours", c.meetings.hours);
+  setText("meeting-place", c.meetings.place);
+  setText("meeting-address", c.meetings.address);
+
+  setText("gallery-eyebrow", c.gallery.eyebrow);
+  setText("gallery-title", c.gallery.title);
+  setText("gallery-intro", c.gallery.intro);
+
+  setText("cta-eyebrow", c.cta.eyebrow);
+  setText("cta-title", c.cta.title);
+  setText("cta-text", c.cta.text);
+
+  setText("footer-name", `© ${new Date().getFullYear()} ${c.site.name}`);
+  setText("footer-location", c.footer.location);
+
+  setLink("nav-discord", c.discord.url);
+  setLink("hero-discord", c.discord.url);
+  setLink("meeting-button", c.discord.url, c.meetings.button);
+  setLink("cta-button", c.discord.url, c.cta.button);
+}
+
 function initLightbox() {
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightbox-image");
@@ -115,4 +188,5 @@ function initLightbox() {
   }, { passive: true });
 }
 
+applyConfig();
 initLightbox();
