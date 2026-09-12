@@ -127,15 +127,15 @@ Le site ne contient volontairement pas de balise `meta keywords` : les mots-clé
 
 ## Logo et favicon
 
-Le logo de l'association est intégré dans :
+Les éléments graphiques du site sont séparés des photos de galerie.
+
+Le logo est ici :
 
 ```text
-rsc/logo-socle-a-socle.png
+assets/branding/logo-socle-a-socle.png
 ```
 
-Il remplace le carré vert avec le `S` dans l'en-tête.
-
-Les icônes de navigateur générées sont :
+Les favicons restent à la racine :
 
 ```text
 favicon.ico
@@ -145,4 +145,23 @@ favicon-192x192.png
 favicon-512x512.png
 ```
 
-Le favicon est référencé directement dans le `<head>` du site.
+Le dossier `rsc/` est réservé exclusivement aux photos de la galerie.
+Ainsi, le logo ne peut plus apparaître parmi les photos.
+
+
+## Structure des images
+
+```text
+assets/
+└── branding/
+    └── logo-socle-a-socle.png
+
+rsc/
+├── photo-1.jpg
+├── ma-table.webp
+└── autre-photo.png
+```
+
+`rsc/` = uniquement les photos à montrer dans la galerie.
+
+La mosaïque d'accueil supporte maintenant correctement 0, 1, 2, 3 ou 4+ photos sans casser la mise en page.

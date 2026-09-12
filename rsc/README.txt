@@ -1,6 +1,14 @@
-Dépose simplement tes photos dans ce dossier.
+DOSSIER PHOTOS DE LA GALERIE
 
-Aucune liste à modifier.
-Aucun nom de fichier imposé.
+Dépose uniquement ici les photos à afficher sur le site.
 
-GitHub Pages / Jekyll les détectera automatiquement lors du prochain déploiement.
+Exemples :
+- table-necromunda.jpg
+- decor-ruines.webp
+- vendredi-asso.png
+
+Aucune liste à modifier et aucun nommage imposé.
+
+IMPORTANT :
+Ne mets pas ici le logo, les favicons ou d'autres images d'interface.
+Ces fichiers vont dans assets/branding/.
