@@ -244,3 +244,12 @@ Sitemap :
 ```text
 https://socle-a-socle.github.io/vitrine/sitemap.xml
 ```
+
+
+## V14 — correction des boutons
+
+Les libellés des boutons sont désormais présents directement dans `index.html`.
+
+Cela évite qu'ils apparaissent vides si JavaScript tarde à charger ou échoue.
+
+Les valeurs de `config.js` restent conservées et peuvent toujours les mettre à jour.
