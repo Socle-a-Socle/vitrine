@@ -1,7 +1,7 @@
 ---
 ---
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ site.lang | default: 'fr-FR' }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,21 +11,30 @@
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#0e0f0d" />
 
-  <link rel="canonical" href="./" />
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="vU9ihgHM160Ttn-JIVVmYIIG_DB5xtqMDBAByClsa9I" />
+
+  <!-- SEO -->
+  <link rel="canonical" href="{{ '/' | absolute_url }}" />
+  <link rel="alternate" hreflang="fr" href="{{ '/' | absolute_url }}" />
+  <link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}" />
+
+  <!-- Icons -->
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png" />
+
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Open Graph : aperçu lors du partage sur Discord, Facebook, etc. -->
+  <!-- Open Graph / Discord / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content="Socle à Socle" />
   <meta property="og:title" content="{{ site.title | escape }}" />
   <meta property="og:description" content="{{ site.description | escape }}" />
-  <meta property="og:url" content="./" />
-  <meta property="og:image" content="social-card.png" />
+  <meta property="og:url" content="{{ '/' | absolute_url }}" />
+  <meta property="og:image" content="{{ '/social-card.png' | absolute_url }}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Socle à Socle — Association wargame, figurines et modélisme à Toulouse" />
@@ -34,32 +43,28 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ site.title | escape }}" />
   <meta name="twitter:description" content="{{ site.description | escape }}" />
-  <meta name="twitter:image" content="social-card.png" />
+  <meta name="twitter:image" content="{{ '/social-card.png' | absolute_url }}" />
 
-  <!-- Données structurées : aide Google à comprendre l'association -->
+  <!-- Données structurées -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "{{ '/' | absolute_url }}#organization",
     "name": "Socle à Socle",
     "description": "Association de wargame, jeux de figurines et modélisme à Toulouse.",
-    "url": "./",
-    "logo": "assets/branding/logo-socle-a-socle.png",
+    "url": "{{ '/' | absolute_url }}",
+    "logo": "{{ '/assets/branding/logo-socle-a-socle.png' | absolute_url }}",
     "sameAs": [
-      "https://discord.gg/xfPg6ckesQ"
+      "{{ site.data.content.discord.url }}"
     ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Toulouse",
-      "addressCountry": "FR"
-    },
     "areaServed": {
       "@type": "City",
       "name": "Toulouse"
     },
     "location": {
       "@type": "Place",
-      "name": "Maison de Quartier des Arènes Romaines",
+      "name": "{{ site.data.content.meetings.place }}",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Toulouse",
@@ -69,34 +74,38 @@
   }
   </script>
 </head>
+
 <body>
+  {% assign c = site.data.content %}
   {% assign gallery_files = site.static_files | sort: "path" %}
 
   <header class="site-header">
-    <a href="#top" class="brand">
-      <span class="brand-mark"><img src="assets/branding/logo-socle-a-socle.png" alt="Logo Socle à Socle" /></span>
-      <span id="site-name">Socle à Socle</span>
+    <a href="#top" class="brand" aria-label="{{ c.site.name }} — accueil">
+      <span class="brand-mark">
+        <img src="assets/branding/logo-socle-a-socle.png" alt="Logo de l'association Socle à Socle" />
+      </span>
+      <span>{{ c.site.name }}</span>
     </a>
 
-    <nav class="nav">
-      <a href="#association">Association</a>
-      <a href="#atelier">Atelier</a>
-      <a href="#rendez-vous">Rendez-vous</a>
-      <a href="#galerie">Galerie</a>
-      <a id="nav-discord" class="nav-cta" href="#" target="_blank" rel="noopener">Discord ↗</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#association">{{ c.nav.association }}</a>
+      <a href="#atelier">{{ c.nav.workshop }}</a>
+      <a href="#rendez-vous">{{ c.nav.meetings }}</a>
+      <a href="#galerie">{{ c.nav.gallery }}</a>
+      <a class="nav-cta" href="{{ c.discord.url }}" target="_blank" rel="noopener">{{ c.nav.discord }}</a>
     </nav>
   </header>
 
   <main id="top">
     <section class="hero section">
       <div class="hero-copy">
-        <p id="hero-eyebrow" class="eyebrow"></p>
-        <h1 id="hero-title"></h1>
-        <p id="hero-text" class="lead"></p>
+        <p class="eyebrow">{{ c.hero.eyebrow }}</p>
+        <h1>{{ c.hero.title }}</h1>
+        <p class="lead">{{ c.hero.text }}</p>
 
         <div class="hero-actions">
-          <a href="#galerie" class="button button-primary">Voir nos tables</a>
-          <a id="hero-discord" href="#" target="_blank" rel="noopener" class="button button-secondary">Rejoindre le Discord ↗</a>
+          <a href="#galerie" class="button button-primary">{{ c.hero.gallery_button }}</a>
+          <a href="{{ c.discord.url }}" target="_blank" rel="noopener" class="button button-secondary">{{ c.hero.discord_button }}</a>
         </div>
       </div>
 
@@ -110,7 +119,7 @@
                 <figure{% if hero_count == 0 %} class="hero-main-image"{% endif %}>
                   <img
                     src="{{ image.path | remove_first: '/' }}"
-                    alt="Table de wargame, figurines et modélisme de l’association Socle à Socle à Toulouse"
+                    alt="Table de wargame, figurines et modélisme de l'association Socle à Socle à Toulouse"
                     {% if hero_count == 0 %}loading="eager"{% else %}loading="lazy"{% endif %}
                     decoding="async"
                     title="Wargame, figurines et modélisme — Socle à Socle Toulouse"
@@ -127,82 +136,69 @@
             <span>Ajoute simplement tes photos dans <strong>rsc/</strong></span>
           </div>
         {% endif %}
-
-        {% if hero_count < 2 %}
-          <div class="hero-placeholder"><span>01</span></div>
-        {% endif %}
-        {% if hero_count < 3 %}
-          <div class="hero-placeholder"><span>02</span></div>
-        {% endif %}
-        {% if hero_count < 4 %}
-          <div class="hero-placeholder"><span>03</span></div>
-        {% endif %}
+        {% if hero_count < 2 %}<div class="hero-placeholder"><span>01</span></div>{% endif %}
+        {% if hero_count < 3 %}<div class="hero-placeholder"><span>02</span></div>{% endif %}
+        {% if hero_count < 4 %}<div class="hero-placeholder"><span>03</span></div>{% endif %}
       </div>
     </section>
 
     <section id="association" class="section split">
       <div>
-        <p id="about-eyebrow" class="eyebrow"></p>
-        <h2 id="about-title"></h2>
+        <p class="eyebrow">{{ c.about.eyebrow }}</p>
+        <h2>{{ c.about.title }}</h2>
       </div>
       <div>
-        <p id="about-text" class="section-text"></p>
-        <div id="about-tags" class="tags"></div>
+        <p class="section-text">{{ c.about.text }}</p>
+        <div class="tags">
+          {% for tag in c.about.tags %}
+            <span>{{ tag }}</span>
+          {% endfor %}
+        </div>
       </div>
     </section>
 
     <section id="atelier" class="section">
       <div class="section-heading">
-        <p id="craft-eyebrow" class="eyebrow"></p>
-        <h2 id="craft-title"></h2>
-        <p id="craft-text" class="section-text"></p>
+        <p class="eyebrow">{{ c.craft.eyebrow }}</p>
+        <h2>{{ c.craft.title }}</h2>
+        <p class="section-text">{{ c.craft.text }}</p>
       </div>
 
       <div class="cards">
-        <article class="card">
-          <span class="card-number">01</span>
-          <h3 id="craft-one-title"></h3>
-          <p id="craft-one-text"></p>
-        </article>
-
-        <article class="card">
-          <span class="card-number">02</span>
-          <h3 id="craft-two-title"></h3>
-          <p id="craft-two-text"></p>
-        </article>
-
-        <article class="card">
-          <span class="card-number">03</span>
-          <h3 id="craft-three-title"></h3>
-          <p id="craft-three-text"></p>
-        </article>
+        {% for card in c.craft.cards %}
+          <article class="card">
+            <span class="card-number">{{ card.number }}</span>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.text }}</p>
+          </article>
+        {% endfor %}
       </div>
     </section>
 
     <section id="rendez-vous" class="section meeting-section">
       <div class="meeting-copy">
-        <p id="meetings-eyebrow" class="eyebrow"></p>
-        <h2 id="meetings-title"></h2>
-        <p id="meetings-intro" class="section-text"></p>
+        <p class="eyebrow">{{ c.meetings.eyebrow }}</p>
+        <h2>{{ c.meetings.title }}</h2>
+        <p class="section-text">{{ c.meetings.intro }}</p>
       </div>
 
       <div class="meeting-card">
-        <div id="meeting-day" class="meeting-day"></div>
+        <div class="meeting-day">{{ c.meetings.day }}</div>
         <div class="meeting-info">
-          <strong id="meeting-frequency"></strong>
-          <span id="meeting-hours"></span>
-          <span id="meeting-place"></span>
-          <span id="meeting-address"></span>
+          <strong>{{ c.meetings.frequency }}</strong>
+          <span>{{ c.meetings.hours }}</span>
+          <span>{{ c.meetings.place }}</span>
+          <span>{{ c.meetings.address }}</span>
         </div>
-        <a id="meeting-button" href="#" target="_blank" rel="noopener" class="button button-primary"></a>
+        <a href="{{ c.discord.url }}" target="_blank" rel="noopener" class="button button-primary">{{ c.meetings.button }}</a>
       </div>
     </section>
 
     <section id="galerie" class="section">
       <div class="section-heading">
-        <p id="gallery-eyebrow" class="eyebrow"></p>
-        <h2 id="gallery-title"></h2>
-        <p id="gallery-intro" class="section-text"></p>
+        <p class="eyebrow">{{ c.gallery.eyebrow }}</p>
+        <h2>{{ c.gallery.title }}</h2>
+        <p class="section-text">{{ c.gallery.intro }}</p>
       </div>
 
       <div class="gallery-grid">
@@ -214,7 +210,7 @@
               <figure class="gallery-item">
                 <img
                   src="{{ image.path | remove_first: '/' }}"
-                  alt="Table de wargame, figurines et modélisme de l’association Socle à Socle à Toulouse"
+                  alt="Table de wargame, figurines et modélisme de l'association Socle à Socle à Toulouse"
                   loading="lazy"
                   decoding="async"
                 />
@@ -226,29 +222,27 @@
       </div>
 
       {% if gallery_count == 0 %}
-        <p class="gallery-empty">Aucune image dans le dossier <strong>rsc/</strong> pour le moment.</p>
+        <p class="gallery-empty">{{ c.gallery.empty }}</p>
       {% endif %}
     </section>
 
     <section class="section cta">
       <div>
-        <p id="cta-eyebrow" class="eyebrow"></p>
-        <h2 id="cta-title"></h2>
-        <p id="cta-text" class="section-text"></p>
+        <p class="eyebrow">{{ c.cta.eyebrow }}</p>
+        <h2>{{ c.cta.title }}</h2>
+        <p class="section-text">{{ c.cta.text }}</p>
       </div>
-      <a id="cta-button" href="#" target="_blank" rel="noopener" class="button button-light"></a>
+      <a href="{{ c.discord.url }}" target="_blank" rel="noopener" class="button button-light">{{ c.cta.button }}</a>
     </section>
   </main>
 
   <footer class="site-footer">
-    <span id="footer-name"></span>
-    <span id="footer-location"></span>
+    <span>© {{ site.time | date: "%Y" }} {{ c.site.name }}</span>
+    <span>{{ c.footer.location }}</span>
   </footer>
-
 
   <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Galerie photos">
     <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Fermer la galerie">×</button>
-
     <button id="lightbox-prev" class="lightbox-nav lightbox-prev" type="button" aria-label="Photo précédente">‹</button>
 
     <div class="lightbox-stage">
@@ -259,7 +253,6 @@
     <button id="lightbox-next" class="lightbox-nav lightbox-next" type="button" aria-label="Photo suivante">›</button>
   </div>
 
-  <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

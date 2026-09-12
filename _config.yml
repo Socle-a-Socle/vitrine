@@ -1,10 +1,8 @@
 title: "Socle à Socle | Association Wargame, Figurines & Modélisme à Toulouse"
 description: "Socle à Socle est une association de wargame, jeux de figurines et modélisme à Toulouse : escarmouche, peinture, décors et tables de jeu chaque vendredi."
-lang: fr-FR
+lang: "fr-FR"
 
-# Le site fonctionne sans modifier ces deux valeurs.
-# Pour un SEO optimal (canonical + sitemap), renseigne l'URL publique plus tard.
-url: ""
-baseurl: ""
+url: "https://socle-a-socle.github.io"
+baseurl: "/vitrine"
 
 markdown: kramdown
