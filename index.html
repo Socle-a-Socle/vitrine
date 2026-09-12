@@ -11,12 +11,12 @@
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#0e0f0d" />
 
-  <link rel="canonical" href="{{ '/' | absolute_url }}" />
-  <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}" />
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/favicon-180x180.png' | relative_url }}" />
-  <link rel="icon" type="image/png" sizes="192x192" href="{{ '/favicon-192x192.png' | relative_url }}" />
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+  <link rel="canonical" href="./" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png" />
+  <link rel="stylesheet" href="style.css" />
 
   <!-- Open Graph : aperçu lors du partage sur Discord, Facebook, etc. -->
   <meta property="og:type" content="website" />
@@ -24,8 +24,8 @@
   <meta property="og:site_name" content="Socle à Socle" />
   <meta property="og:title" content="{{ site.title | escape }}" />
   <meta property="og:description" content="{{ site.description | escape }}" />
-  <meta property="og:url" content="{{ '/' | absolute_url }}" />
-  <meta property="og:image" content="{{ '/social-card.png' | absolute_url }}" />
+  <meta property="og:url" content="./" />
+  <meta property="og:image" content="social-card.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Socle à Socle — Association wargame, figurines et modélisme à Toulouse" />
@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ site.title | escape }}" />
   <meta name="twitter:description" content="{{ site.description | escape }}" />
-  <meta name="twitter:image" content="{{ '/social-card.png' | absolute_url }}" />
+  <meta name="twitter:image" content="social-card.png" />
 
   <!-- Données structurées : aide Google à comprendre l'association -->
   <script type="application/ld+json">
@@ -43,8 +43,8 @@
     "@type": "Organization",
     "name": "Socle à Socle",
     "description": "Association de wargame, jeux de figurines et modélisme à Toulouse.",
-    "url": "{{ '/' | absolute_url }}",
-    "logo": "{{ '/assets/branding/logo-socle-a-socle.png' | absolute_url }}",
+    "url": "./",
+    "logo": "assets/branding/logo-socle-a-socle.png",
     "sameAs": [
       "https://discord.gg/xfPg6ckesQ"
     ],
@@ -74,7 +74,7 @@
 
   <header class="site-header">
     <a href="#top" class="brand">
-      <span class="brand-mark"><img src="{{ '/assets/branding/logo-socle-a-socle.png' | relative_url }}" alt="Logo Socle à Socle" /></span>
+      <span class="brand-mark"><img src="assets/branding/logo-socle-a-socle.png" alt="Logo Socle à Socle" /></span>
       <span id="site-name">Socle à Socle</span>
     </a>
 
@@ -109,7 +109,7 @@
               {% if hero_count < 4 %}
                 <figure{% if hero_count == 0 %} class="hero-main-image"{% endif %}>
                   <img
-                    src="{{ image.path | relative_url }}"
+                    src="{{ image.path | remove_first: '/' }}"
                     alt="Table de wargame, figurines et modélisme de l’association Socle à Socle à Toulouse"
                     {% if hero_count == 0 %}loading="eager"{% else %}loading="lazy"{% endif %}
                     decoding="async"
@@ -213,7 +213,7 @@
             {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' or ext == '.gif' or ext == '.avif' %}
               <figure class="gallery-item">
                 <img
-                  src="{{ image.path | relative_url }}"
+                  src="{{ image.path | remove_first: '/' }}"
                   alt="Table de wargame, figurines et modélisme de l’association Socle à Socle à Toulouse"
                   loading="lazy"
                   decoding="async"
@@ -259,7 +259,7 @@
     <button id="lightbox-next" class="lightbox-nav lightbox-next" type="button" aria-label="Photo suivante">›</button>
   </div>
 
-  <script src="{{ '/config.js' | relative_url }}"></script>
-  <script src="{{ '/script.js' | relative_url }}"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

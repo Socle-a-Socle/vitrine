@@ -165,3 +165,47 @@ rsc/
 `rsc/` = uniquement les photos à montrer dans la galerie.
 
 La mosaïque d'accueil supporte maintenant correctement 0, 1, 2, 3 ou 4+ photos sans casser la mise en page.
+
+
+## V9 — correction des chemins GitHub Pages
+
+Cette version corrige le problème des URL absolues comme :
+
+```html
+<link rel="stylesheet" href="/style.css">
+```
+
+Le site utilise maintenant des chemins relatifs :
+
+```html
+<link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
+<script src="script.js"></script>
+```
+
+Le logo utilise :
+
+```text
+assets/branding/logo-socle-a-socle.png
+```
+
+et les photos détectées par Jekyll sont rendues sous la forme :
+
+```text
+rsc/nom-de-la-photo.jpg
+```
+
+Cela permet au site de fonctionner aussi bien sur :
+
+```text
+https://utilisateur.github.io/nom-du-repo/
+```
+
+que sur un domaine personnalisé, sans devoir connaître le nom du dépôt à l'avance.
+
+### SEO
+
+Les valeurs `url` et `baseurl` dans `_config.yml` ne sont plus nécessaires pour charger le site.
+Elles servent uniquement à produire des URL absolues parfaites dans le sitemap et les métadonnées SEO.
+
+Tu peux donc d'abord publier le site, vérifier qu'il fonctionne, puis renseigner l'URL publique ensuite.
