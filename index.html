@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Socle à Socle</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <a class="brand" href="#accueil">Socle<span>à</span>Socle</a>
+      <div class="nav-links">
+        <a href="#association">L'association</a>
+        <a href="#rendez-vous">Rendez-vous</a>
+        <a href="#galerie">Galerie</a>
+        <a class="discord-link" id="nav-discord" href="#" target="_blank" rel="noopener">Discord ↗</a>
+      </div>
+    </nav>
+
+    <div class="hero-content container" id="accueil">
+      <div class="hero-copy">
+        <p class="eyebrow" id="hero-eyebrow"></p>
+        <h1 id="hero-title"></h1>
+        <p class="hero-text" id="hero-text"></p>
+        <div class="hero-actions">
+          <a class="button button-primary" id="hero-discord" href="#" target="_blank" rel="noopener">Rejoindre le Discord</a>
+          <a class="button button-ghost" href="#galerie">Voir nos tables ↓</a>
+        </div>
+      </div>
+
+      <div class="hero-photos" id="hero-photos"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro section" id="association">
+      <div class="container intro-grid">
+        <div>
+          <p class="eyebrow" id="about-eyebrow"></p>
+          <h2 id="about-title"></h2>
+        </div>
+        <div class="intro-copy">
+          <p class="lead" id="about-text"></p>
+          <div class="tags" id="about-tags"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="craft section-dark">
+      <div class="container">
+        <div class="craft-heading">
+          <p class="eyebrow" id="craft-eyebrow"></p>
+          <h2 id="craft-title"></h2>
+          <p id="craft-text"></p>
+        </div>
+        <div class="craft-grid">
+          <article class="craft-card">
+            <span>01</span>
+            <h3 id="craft-one-title"></h3>
+            <p id="craft-one-text"></p>
+          </article>
+          <article class="craft-card">
+            <span>02</span>
+            <h3 id="craft-two-title"></h3>
+            <p id="craft-two-text"></p>
+          </article>
+          <article class="craft-card">
+            <span>03</span>
+            <h3 id="craft-three-title"></h3>
+            <p id="craft-three-text"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section meetings" id="rendez-vous">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" id="meetings-eyebrow"></p>
+            <h2 id="meetings-title"></h2>
+          </div>
+          <p class="section-intro" id="meetings-intro"></p>
+        </div>
+
+        <div class="meeting-feature">
+          <div class="meeting-main">
+            <span class="big-day" id="meeting-day"></span>
+            <div>
+              <h3 id="meeting-frequency"></h3>
+              <p id="meeting-hours"></p>
+            </div>
+          </div>
+          <div class="meeting-place">
+            <span class="pin">⌖</span>
+            <div>
+              <strong id="meeting-place"></strong>
+              <p id="meeting-address"></p>
+            </div>
+          </div>
+          <a class="button button-dark" id="meeting-discord" href="#" target="_blank" rel="noopener">Organiser une partie ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section section" id="galerie">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" id="gallery-eyebrow"></p>
+            <h2 id="gallery-title"></h2>
+          </div>
+          <p class="section-intro" id="gallery-intro"></p>
+        </div>
+
+        <div class="gallery" id="gallery-grid"></div>
+        <p class="gallery-empty" id="gallery-empty"></p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container final-cta-inner">
+        <div>
+          <p class="eyebrow" id="cta-eyebrow"></p>
+          <h2 id="cta-title"></h2>
+          <p id="cta-text"></p>
+        </div>
+        <a class="button button-light" id="cta-discord" href="#" target="_blank" rel="noopener">Rejoindre le Discord ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span id="footer-name"></span>
+      <span id="footer-location"></span>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">×</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Photo précédente">‹</button>
+    <img id="lightbox-image" src="" alt="">
+    <button class="lightbox-next" id="lightbox-next" aria-label="Photo suivante">›</button>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="gallery.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
