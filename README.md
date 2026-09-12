@@ -253,3 +253,20 @@ Les libellés des boutons sont désormais présents directement dans `index.html
 Cela évite qu'ils apparaissent vides si JavaScript tarde à charger ou échoue.
 
 Les valeurs de `config.js` restent conservées et peuvent toujours les mettre à jour.
+
+
+## V15 — zoom / carrousel restauré
+
+Le zoom des photos est désormais indépendant du chargement de `config.js`.
+
+Fonctionnalités :
+
+- clic sur les photos du bandeau ou de la galerie ;
+- ouverture plein écran ;
+- précédent / suivant ;
+- clavier `←` / `→` ;
+- fermeture avec `Échap` ;
+- swipe sur mobile ;
+- compteur de photos.
+
+Même si une erreur se produit dans la configuration des textes, le carrousel continue de fonctionner.
