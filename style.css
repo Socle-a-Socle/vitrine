@@ -56,19 +56,22 @@ img {
 .brand-mark {
   width: 42px;
   height: 42px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #ffffff;
   border: 1px solid var(--line);
   overflow: hidden;
-  flex: 0 0 auto;
+  flex: 0 0 42px;
 }
 
 .brand-mark img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 3px;
+  object-position: center center;
+  padding: 2px;
 }
 
 .nav {

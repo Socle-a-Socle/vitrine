@@ -209,3 +209,14 @@ Les valeurs `url` et `baseurl` dans `_config.yml` ne sont plus nécessaires pour
 Elles servent uniquement à produire des URL absolues parfaites dans le sitemap et les métadonnées SEO.
 
 Tu peux donc d'abord publier le site, vérifier qu'il fonctionne, puis renseigner l'URL publique ensuite.
+
+
+## V10 — logo centré
+
+L'en-tête utilise désormais une version carrée et centrée du logo :
+
+```text
+assets/branding/logo-socle-a-socle-square.png
+```
+
+Cela évite l'effet visuel de décalage causé par l'ancien fichier vertical.
